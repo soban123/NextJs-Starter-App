@@ -10,23 +10,19 @@ const index = () => {
 useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
     .then(res => res.json())
-    .then(  data => {setData(data) ; console.log(data) } )
+    .then(  data => {setData(data) ; console.log(data) ; 
+         dispatch({
+        type: "LOGGED",
+        payload: data,
+      }) 
+    } )
    
 }, [])
 
   return (
     <div>
       <p>index page</p>
-      <button
-        onClick={() =>
-          dispatch({
-            type: "LOGGED",
-            payload: Data,
-          })
-        }
-      >
-        login
-      </button>
+   
       <button
         onClick={() =>
           dispatch({
