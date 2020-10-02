@@ -1,10 +1,13 @@
 import { useState, useEffect, useReducer, createContext } from "react";
-import { user } from "./reducer/user";
+import { user , user2 } from "./reducer/user";
 
 // initial state
 const initialState = {
-  user: {},
+    user: [],
+    name : "soban"
 };
+
+
 
 // create context
 const Context = createContext({});
@@ -17,7 +20,7 @@ const combineReducers = (...reducers) => (state, action) => {
 
 // context provider
 const Provider = ({ children }) => {
-  const [state, dispatch] = useReducer(combineReducers(user), initialState);
+  const [state, dispatch] = useReducer(combineReducers(user , user2), initialState);
   const value = { state, dispatch };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

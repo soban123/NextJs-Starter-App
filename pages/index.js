@@ -1,16 +1,27 @@
-import React, { useState, useContext } from "react";
+import React, { useState , useEffect, useContext } from "react";
 import { Context } from "../context";
 
 const index = () => {
   const { state, dispatch } = useContext(Context);
+
+
+
+  const [Data , setData] = useState()
+useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(  data => {setData(data) ; console.log(data) } )
+   
+}, [])
+
   return (
     <div>
       <p>index page</p>
       <button
         onClick={() =>
           dispatch({
-            type: "LOGGED_IN_USER",
-            payload: "Ryan Dhungel",
+            type: "LOGGED",
+            payload: Data,
           })
         }
       >

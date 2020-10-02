@@ -6,3 +6,12 @@ export function user(state, action) {
         return state;
     }
   }
+
+  export function user2(state, action) {
+    switch (action.type) {
+      case "LOGGED":
+        return { ...state, user: action.payload };
+      default:
+        return state;
+    }
+  }
